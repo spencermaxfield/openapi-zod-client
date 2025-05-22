@@ -401,7 +401,7 @@ const formatPatternIfNeeded = (pattern: string) => {
 
     pattern = escapeControlCharacters(pattern);
 
-    return `/${pattern}/`;
+    return pattern.includes("\\u") || pattern.includes("\\p") ? `/${pattern}/u` : `/${pattern}/`;
 };
 
 const getZodChainableStringValidations = (schema: SchemaObject) => {
